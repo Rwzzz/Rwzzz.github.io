@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
     <title>返校通行证(2分钟内有效)</title>
     <link rel="stylesheet" href="css/weui.min.css">
-    <script type="text/javascript" src="js/Untitled-1.js" charset="UTF-8"></script>
 </head>
 <body ontouchstart>
 <style type="text/css">
@@ -16,26 +15,41 @@
 	border: none;
 }
 </style>
+
 <div id="bodyDiv">
-	<p style="text-align:center;" id="imgBg"><br/><img src="images/pass1.png" alt=""><br/><br/></p>
+	<p onclick="changeUI()" id="myColorUI" style="text-align:center;background:green;"><br><img src="images/pass1.png" width="330px" height="225px" alt=""><br>
+            <font style="font-size:100px">
+                <script type="text/javascript">
+                    var t = new Date();
+                    var hour = t.getHours();
+                    var minute = t.getMinutes();
+                    var second = t.getSeconds();
+                    var nowTime = hour + ((minute < 10) ? ":0" : ":") + minute + ((second < 10) ? ":0" : ":") + second;
+                    document.write(nowTime);
+                </script>
+            </font>
+        </p>
 	<div class="weui-cells__title">学生返校通行证</div>
 	<div class="weui-cells">
 		<div class="weui-cell  weui-cell_example">
 			<div class="weui-cell__hd"><img src="images/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
 			<div class="weui-cell__bd">
-				<p>学号：4032042397</p>
+				<p>学号：<script>var va1=localStorage.value1
+			document.write(va1)</script></p>
 			</div>
 		</div>
 		<div class="weui-cell  weui-cell_example">
 			<div class="weui-cell__hd"><img src="images/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
 			<div class="weui-cell__bd">
-				<p>姓名：饶威志</p>
+				<p>姓名：<script>var va2=localStorage.value2
+			document.write(va2)</script></p>
 			</div>
 		</div>
 		<div class="weui-cell  weui-cell_example">
 			<div class="weui-cell__hd"><img src="images/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
 			<div class="weui-cell__bd">
-				<p>学院：信息学院</p>
+				<p>学院：<script>var va3=localStorage.value3
+			document.write(va3)</script></p>
 			</div>
 		</div>
 		<div class="weui-cell  weui-cell_example">
@@ -48,7 +62,7 @@
 	var hour = t.getHours();
 	var minute = t.getMinutes();
 	var second = t.getSeconds();
-	var nowTime = year+"/"+month+"/"+day+" "+hour+((minute<10)?":0":":")+minute+((second<10)?":0":":")+second;
+	var nowTime = year+"/"+month+"/"+day+" ";
 	document.write(nowTime);
 </script></p>
 			</div>
@@ -58,9 +72,24 @@
 	<br/>
 	<br/>
 	<div class="weui-footer">
-	<p>版权所有 &copy; 辽宁大学</p>
+		<p >版权所有 &copy; 辽宁大学</p>
+		<input type="color" id="myColor" onchange="ChangeColor()" style="opacity:0;">
 	</div>
 </div>
-<script type="text/javascript" src="js/Untitled-1.js"></script>
+ <script type="text/javascript">
+        var color;
+        var UI;
+
+        function ChangeColor() {　
+            color = document.getElementById("myColor").value
+            console.log(color);　　　　　　　　　　　　　　 //改变颜色的事件
+        }
+
+        function changeUI() {　
+            UI = document.getElementById("myColorUI")
+            UI.style.background = color
+        }
+    </script>
+
 </body>
 </html>
